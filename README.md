@@ -1,0 +1,165 @@
+# Deep Learning for Dual Network Architecture for Furrow Following and Weed Detection
+
+## INTRODUCTION
+As the worldwide population continues to grow, the agricultural workforce is aging, and newer generations are increasingly moving away from farming toward urban employment. This trend creates a pressing need to further automate agricultural processes. In other words, intelligent agriculture must continue to be developed to ensure that fields can maintain or increase productivity with reduced labor. According to FAO et al. [[1]](https://www.fao.org/faostat/en/#home), the global harvested area of major88primary crops reached 1.5 billion hectares in 2024, representing an increase of 197 million hectares compared to 2010.
+
+This repository presents the feasibility of training two independent convolutional networks within a decoupled computational framework using synchronized RGB images acquired by a differential-drive robot in a greenhouse. A lightweight convolutional neural network with fully connected layers (CNN-FC) predicts steering-angle and velocity control commands, while a U-Net segments plant regions on a plastic mulch using binary pseudo-labels automatically generated via HSV color-space thresholding.
+
+## SYSTEM DESCRIPTION
+The robotic system used for gathering the data is ilustrated in Figure 1. The robot is equipped with an ASUS Xtion Pro RGB-D camera for visual perception of the furrow, an Arducam 5 MP wide angle USB camera for weed image acquisition, an Orange Pi 5 single-board computer with 16 GB RAM,  two Pololu DC geared motors driven by an IBT-2 motor driver based on the BTS7960 high-current H-bridge chip and an Arduino Mega 2560 microcontroller to control the speed and direction  through PWM signals generated.
+
+
+
+<p align="center">
+  <img src="assets/robot.jpg" alt="The robot in the field" width="380" height="260" style="border: 2px solid #ddd; border-radius: 4px;">
+  <br>
+  <em><b>Figure 1.</b> The experimental platform.</em>
+</p>
+
+
+## PREREQUISITES
+ 
+### Hardware Specifications 
+ * **CPU:** Intel Core i7-14700KF
+ * **RAM:** 32GB 
+ * **GPU:** 2x NVIDIA GeForce RTX (12 GB and 16 GB VRAM)
+ * **OS:**  Ubuntu 22.04.1 LTS
+ * 
+### Software Environment
+* **Framework:** PyTorch 2.12.0+cu132
+* **Interface:** Jupyter Notebook 7.5.6
+
+
+
+
+
+
+## Repository Structure & Packages
+## 📁 Repository Structure & Packages
+
+```text
+.
+├── assets/
+│   └── robot.jpg                        # Picture/diagram of the robot setup
+├── README.md                            # Main project documentation
+└── src/                                 # Custom ROS 2 Workspace Packages
+    ├── andromina_ai_driver/
+    │   ├── CMakeLists.txt               # Build configuration for the driver
+    │   ├── include/andromina_ai_driver/ # Driver header files
+    │   ├── LICENSE                      # Package license
+    │   ├── package.xml                  # ROS 2 package dependencies
+    │   └── src/
+    │       └── andromina_ai_furrow.cpp  # Main control node for AI trajectory tracking
+    │
+    ├── andromina_ai_model/
+    │   ├── andromina_ai_model/
+    │   │   ├── andromina_ai_onnx_model_server.py # Python inference script
+    │   │   └── __init__.py
+    │   ├── LICENSE
+    │   ├── models/                      # Deep learning weights directory
+    │   │   ├── best_control_model.onnx  # Optimized inference weights
+    │   │   ├── best_control_model.pt    # PyTorch backbone checkpoints
+    │   │   └── best_unet.pt             # Segmentation network weights
+    │   ├── package.xml
+    │   ├── resource/
+    │   ├── setup.cfg
+    │   ├── setup.py                     # Python package install layout configuration
+    │   └── test/                        # Automated code-style checks
+    │
+    ├── andromina_control_bringup/
+    │   ├── andromina_control_bringup/
+    │   │   └── __init__.py
+    │   ├── launch/                      # System Deployment Launch Layer
+    │   │   ├── andromina_ai.launch.py   # Run full AI model tracking network
+    │   │   ├── andromina_system.launch.py # Bring up hardware (cameras, sensors)
+    │   │   └── andromina_trigger.launch.py # Launch system logger triggers
+    │   ├── package.xml
+    │   ├── resource/
+    │   ├── setup.cfg
+    │   ├── setup.py
+    │   └── test/
+    │
+    ├── andromina_img_publisher/
+    │   ├── CMakeLists.txt
+    │   ├── include/andromina_img_publisher/
+    │   ├── LICENSE
+    │   ├── package.xml
+    │   └── src/
+    │       └── andromina_img_publisher_client.cpp # Handles raw camera feed streaming
+    │
+    ├── andromina_joystick/
+    │   ├── CMakeLists.txt
+    │   ├── include/andromina_joystick/
+    │   ├── LICENSE
+    │   ├── package.xml
+    │   └── src/
+    │       └── joystick_control.cpp     # Controls manual driving overrides
+    │
+    ├── andromina_msgs/                  # Custom System Interface Package
+    │   ├── CMakeLists.txt
+    │   ├── include/andromina_msgs/
+    │   ├── msg/                         # Custom ROS 2 data types
+    │   │   ├── ControlCommand.msg       # Steer/velocity command schema
+    │   │   └── ImageWithID.msg          # Frame synchronized image type
+    │   ├── package.xml
+    │   ├── src/
+    │   └── srv/
+    │       └── ProcessImage.srv         # AI image processing service definition
+    │
+    ├── joystick_trigger/
+    │   ├── CMakeLists.txt
+    │   ├── include/joystick_trigger/
+    │   ├── package.xml
+    │   └── src/
+    │       ├── joystick_trigger_ai_mode.cpp # Toggles autonomous control
+    │       └── joystick_trigger.cpp
+    │
+    └── velocity_image_logger/
+        ├── CMakeLists.txt
+        ├── include/velocity_image_logger/
+        ├── LICENSE
+        ├── package.xml
+        └── src/
+            └── data_sync_thread.cpp     # Records and syncs field datasets
+```
+
+
+## 🔧 Dependencies & Installation
+
+This project requires the `serial-ros2` library for serial communication. And, also requires the ros2 asus xtion to get images from the RGB camera.  
+
+Follow these steps to set up your workspace:
+
+1. **Create and navigate to your workspace:**
+   ```bash
+   mkdir -p ~/ros2_ws/src
+   cd ~/ros2_ws/src
+   ```
+
+2. **Clone this repository:**
+   ```bash
+   git clone https://github.com .
+   ```
+
+3. **Clone the third-party serial dependency:**
+   ```bash
+   git clone https://github.com/RoverRobotics-forks/serial-ros2.git
+   ```
+
+4. **Clone the third-party serial dependency:**
+   ```bash
+   git clone https://github.com/mgonzs13/ros2_asus_xtion.git
+   ```
+
+5. **Build the complete workspace:**
+   ```bash
+   cd ~/ros2_ws
+   colcon build --packages-skip asus_xtion asus_xtion_description asus_xtion_gazebo
+   source install/setup.bash
+   ```
+
+
+
+# Bibliogrhapy:
+
+[1] Food and Agriculture Organization of the United Nations, Agricultural production statistics 2010–2024, Tech. Rep. 96, FAO, Rome, accessed: 2024-03-20 (2024). URL https://www.fao.org/faostat/en/
