@@ -106,22 +106,26 @@ Follow these steps to set up your workspace:
    ```
 
 3. **Clone the third-party serial dependency:**
+
    $git clone  https://github.com/RoverRobotics-forks/serial-ros2.git
    ```bash
    ```
 
 4. **Clone the third-party serial dependency:**
+5. 
    ```bash
    $git clone https://github.com/mgonzs13/ros2_asus_xtion.git
    ```
 
 5. **Build the complete workspace:**
+6. 
    ```bash
    $cd ~/ros2_ws
    $colcon build --packages-skip asus_xtion asus_xtion_description asus_xtion_gazebo
    $source install/setup.bash
    ```
 6. **Launch the gathering data:**
+7. 
     ```bash
    change the executable joystick trigger to:
    add_executable(joystick_trigger src/joystick_trigger.cpp)
@@ -131,6 +135,7 @@ Follow these steps to set up your workspace:
 
    ```
 7. **Launch the model ai test:**
+8. 
     ```bash
    change the executable joystick trigger to:
    add_executable(joystick_trigger src/joystick_trigger_ai_mode.cpp)
