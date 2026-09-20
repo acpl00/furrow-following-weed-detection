@@ -95,6 +95,7 @@ Follow these steps to set up your workspace:
 
 
 1. **Create and navigate to your workspace:**
+2. 
    ```bash
    $mkdir -p ~/ros2_ws/src
    $cd ~/ros2_ws/src
