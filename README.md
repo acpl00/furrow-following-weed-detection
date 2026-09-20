@@ -35,94 +35,57 @@ The robotic system used for gathering the data is ilustrated in Figure 1. The ro
 
 
 ## Repository Structure & Packages
-## 📁 Repository Structure & Packages
+
 
 ```text
 .
 ├── assets/
-│   └── robot.jpg                        # Picture/diagram of the robot setup
-├── README.md                            # Main project documentation
-└── src/                                 # Custom ROS 2 Workspace Packages
+│   └── robot.jpg                                  # Picture/diagram of the robot setup
+├── README.md                                      # Main project documentation
+└── src/                                           # Custom ROS 2 Workspace Packages
     ├── andromina_ai_driver/
-    │   ├── CMakeLists.txt               # Build configuration for the driver
-    │   ├── include/andromina_ai_driver/ # Driver header files
-    │   ├── LICENSE                      # Package license
-    │   ├── package.xml                  # ROS 2 package dependencies
     │   └── src/
-    │       └── andromina_ai_furrow.cpp  # Main control node for AI trajectory tracking
+    │       └── andromina_ai_furrow.cpp            # Main control node for AI trajectory 
     │
     ├── andromina_ai_model/
     │   ├── andromina_ai_model/
-    │   │   ├── andromina_ai_onnx_model_server.py # Python inference script
-    │   │   └── __init__.py
-    │   ├── LICENSE
-    │   ├── models/                      # Deep learning weights directory
-    │   │   ├── best_control_model.onnx  # Optimized inference weights
-    │   │   ├── best_control_model.pt    # PyTorch backbone checkpoints
-    │   │   └── best_unet.pt             # Segmentation network weights
-    │   ├── package.xml
-    │   ├── resource/
-    │   ├── setup.cfg
-    │   ├── setup.py                     # Python package install layout configuration
-    │   └── test/                        # Automated code-style checks
+    │   │   └── andromina_ai_onnx_model_server.py  # Python inference script
+    │   └── models/                                # Deep learning weights directory
+    │       ├── best_control_model.onnx            # Optimized inference weights
+    │       ├── best_control_model.pt              # PyTorch backbone checkpoints
+    │       └── best_unet.pt                       # Segmentation network weights
     │
     ├── andromina_control_bringup/
-    │   ├── andromina_control_bringup/
-    │   │   └── __init__.py
-    │   ├── launch/                      # System Deployment Launch Layer
-    │   │   ├── andromina_ai.launch.py   # Run full AI model tracking network
-    │   │   ├── andromina_system.launch.py # Bring up hardware (cameras, sensors)
-    │   │   └── andromina_trigger.launch.py # Launch system logger triggers
-    │   ├── package.xml
-    │   ├── resource/
-    │   ├── setup.cfg
-    │   ├── setup.py
-    │   └── test/
+    │   └── launch/                                # System Deployment Launch Layer
+    │       ├── andromina_ai.launch.py             # Run full AI model tracking network
+    │       ├── andromina_system.launch.py         # Bring up hardware (cameras, sensors)
+    │       └── andromina_trigger.launch.py        # Launch system logger triggers
     │
     ├── andromina_img_publisher/
-    │   ├── CMakeLists.txt
-    │   ├── include/andromina_img_publisher/
-    │   ├── LICENSE
-    │   ├── package.xml
     │   └── src/
     │       └── andromina_img_publisher_client.cpp # Handles raw camera feed streaming
     │
     ├── andromina_joystick/
-    │   ├── CMakeLists.txt
-    │   ├── include/andromina_joystick/
-    │   ├── LICENSE
-    │   ├── package.xml
     │   └── src/
-    │       └── joystick_control.cpp     # Controls manual driving overrides
+    │       └── joystick_control.cpp               # Controls manual driving overrides
     │
-    ├── andromina_msgs/                  # Custom System Interface Package
-    │   ├── CMakeLists.txt
-    │   ├── include/andromina_msgs/
-    │   ├── msg/                         # Custom ROS 2 data types
-    │   │   ├── ControlCommand.msg       # Steer/velocity command schema
-    │   │   └── ImageWithID.msg          # Frame synchronized image type
-    │   ├── package.xml
-    │   ├── src/
+    ├── andromina_msgs/                            # Custom System Interface Package
+    │   ├── msg/                                   # Custom ROS 2 data types
+    │   │   ├── ControlCommand.msg                 # Steer/velocity command schema
+    │   │   └── ImageWithID.msg                    # Frame synchronized image type
     │   └── srv/
-    │       └── ProcessImage.srv         # AI image processing service definition
+    │       └── ProcessImage.srv                   # AI image processing service definition
     │
     ├── joystick_trigger/
-    │   ├── CMakeLists.txt
-    │   ├── include/joystick_trigger/
-    │   ├── package.xml
     │   └── src/
-    │       ├── joystick_trigger_ai_mode.cpp # Toggles autonomous control
-    │       └── joystick_trigger.cpp
+    │       ├── joystick_trigger_ai_mode.cpp       # Trigger the test of the ai model
+    │       └── joystick_trigger.cpp               # Trigger the driving in the furrow 
     │
     └── velocity_image_logger/
-        ├── CMakeLists.txt
-        ├── include/velocity_image_logger/
-        ├── LICENSE
-        ├── package.xml
         └── src/
-            └── data_sync_thread.cpp     # Records and syncs field datasets
-```
+            └── data_sync_thread.cpp               # Records and syncs field datasets
 
+```
 
 ## 🔧 Dependencies & Installation
 
