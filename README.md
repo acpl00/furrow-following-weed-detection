@@ -123,7 +123,7 @@ Follow these steps to set up your workspace:
 6. **Launch the gathering data:**
     ```bash
    change the executable joystick trigger to:
-   `add_executable(joystick_trigger src/joystick_trigger.cpp)`
+   ```add_executable(joystick_trigger src/joystick_trigger.cpp)```
 
    $cd ~/ros2_ws
    $ros2 launch andromina_control_bringup andromina_system.launch.py 
@@ -132,7 +132,7 @@ Follow these steps to set up your workspace:
 7. **Launch the model ai test:**
     ```bash
    change the executable joystick trigger to:
-   `add_executable(joystick_trigger src/joystick_trigger_ai_mode.cpp)`
+   ```add_executable(joystick_trigger src/joystick_trigger_ai_mode.cpp)```
 
    $cd ~/ros2_ws
    $ros2 launch andromina_control_bringup  andromina_ai.launch.py 
