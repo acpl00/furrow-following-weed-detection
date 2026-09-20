@@ -40,7 +40,7 @@ The robotic system used for gathering the data is ilustrated in Figure 1. The ro
 ```text
 .
 ├── assets/
-│   └── robot.jpg                                  # Picture/diagram of the robot setup
+│   └── robot.jpg                                  # Picture of the robot setup
 ├── README.md                                      # Main project documentation
 └── src/                                           # Custom ROS 2 Workspace Packages
     ├── andromina_ai_driver/
@@ -89,7 +89,7 @@ The robotic system used for gathering the data is ilustrated in Figure 1. The ro
 
 ## 🔧 Dependencies & Installation
 
-This project requires the `serial-ros2` library for serial communication. And, also requires the ros2 asus xtion to get images from the RGB camera.  
+This project requires the `serial-ros2` library for serial communication. And, also requires the `ros2-asus-xtion` to get images from the RGB camera.  
 
 Follow these steps to set up your workspace:
 
