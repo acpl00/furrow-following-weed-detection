@@ -1,0 +1,4 @@
+sensor_msgs/Image input_image
+int32 image_id
+---
+string status
