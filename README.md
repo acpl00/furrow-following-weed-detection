@@ -102,7 +102,7 @@ Follow these steps to set up your workspace:
    ```
 
 2. **Clone this repository:**
-3. 
+
    ```bash
    $git clone https://github.com/acpl00/furrow-following-weed-detection.git
    ```
