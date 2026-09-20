@@ -93,6 +93,7 @@ This project requires the `serial-ros2` library for serial communication. And, a
 
 Follow these steps to set up your workspace:
 
+
 1. **Create and navigate to your workspace:**
    ```bash
    $mkdir -p ~/ros2_ws/src
@@ -100,9 +101,9 @@ Follow these steps to set up your workspace:
    ```
 
 2. **Clone this repository:**
+3. 
    ```bash
    $git clone https://github.com/acpl00/furrow-following-weed-detection.git
-   $git clone [https://github.com/RoverRobotics-forks/serial-ros2.git](https://github.com/RoverRobotics-forks/serial-ros2.git) 
    ```
 
 3. **Clone the third-party serial dependency:**
