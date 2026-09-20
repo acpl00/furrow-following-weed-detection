@@ -95,33 +95,49 @@ Follow these steps to set up your workspace:
 
 1. **Create and navigate to your workspace:**
    ```bash
-   mkdir -p ~/ros2_ws/src
-   cd ~/ros2_ws/src
+   $mkdir -p ~/ros2_ws/src
+   $cd ~/ros2_ws/src
    ```
 
 2. **Clone this repository:**
    ```bash
-   git clone https://github.com .
+   $git clone https://github.com/acpl00/furrow-following-weed-detection.git
    ```
 
 3. **Clone the third-party serial dependency:**
    ```bash
-   git clone https://github.com/RoverRobotics-forks/serial-ros2.git
+   $git clone https://github.com/RoverRobotics-forks/serial-ros2.git
    ```
 
 4. **Clone the third-party serial dependency:**
    ```bash
-   git clone https://github.com/mgonzs13/ros2_asus_xtion.git
+   $git clone https://github.com/mgonzs13/ros2_asus_xtion.git
    ```
 
 5. **Build the complete workspace:**
    ```bash
-   cd ~/ros2_ws
-   colcon build --packages-skip asus_xtion asus_xtion_description asus_xtion_gazebo
-   source install/setup.bash
+   $cd ~/ros2_ws
+   $colcon build --packages-skip asus_xtion asus_xtion_description asus_xtion_gazebo
+   $source install/setup.bash
    ```
+6. **Launch the gathering data:**
+    ```bash
+   change the executable joystick trigger to:
+   `add_executable(joystick_trigger src/joystick_trigger.cpp)`
 
+   $cd ~/ros2_ws
+   $ros2 launch andromina_control_bringup andromina_system.launch.py 
 
+   ```
+7. **Launch the model ai test:**
+    ```bash
+   change the executable joystick trigger to:
+   `add_executable(joystick_trigger src/joystick_trigger_ai_mode.cpp)`
+
+   $cd ~/ros2_ws
+   $ros2 launch andromina_control_bringup  andromina_ai.launch.py 
+   
+   ```
 
 # Bibliogrhapy:
 
