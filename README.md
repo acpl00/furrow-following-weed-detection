@@ -102,11 +102,12 @@ Follow these steps to set up your workspace:
 2. **Clone this repository:**
    ```bash
    $git clone https://github.com/acpl00/furrow-following-weed-detection.git
+   $git clone [https://github.com/RoverRobotics-forks/serial-ros2.git](https://github.com/RoverRobotics-forks/serial-ros2.git) 
    ```
 
 3. **Clone the third-party serial dependency:**
    ```bash
-   $git clone URL https://github.com/RoverRobotics-forks/serial-ros2.git
+   $git clone  https://github.com/RoverRobotics-forks/serial-ros2.git
    ```
 
 4. **Clone the third-party serial dependency:**
