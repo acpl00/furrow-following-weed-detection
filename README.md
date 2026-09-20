@@ -106,8 +106,8 @@ Follow these steps to set up your workspace:
    ```
 
 3. **Clone the third-party serial dependency:**
-   ```bash
    $git clone  https://github.com/RoverRobotics-forks/serial-ros2.git
+   ```bash
    ```
 
 4. **Clone the third-party serial dependency:**
