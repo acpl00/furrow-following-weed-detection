@@ -144,7 +144,6 @@ Follow these steps to set up your workspace:
 
    $cd ~/ros2_ws
    $ros2 launch andromina_control_bringup  andromina_ai.launch.py 
-   
    ```
 
 # Bibliogrhapy:
