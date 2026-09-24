@@ -1,7 +1,9 @@
 # Deep Learning for Dual Network Architecture for Furrow Following and Weed Detection
 
 ## INTRODUCTION
-As the worldwide population continues to grow, the agricultural workforce is aging, and newer generations are increasingly moving away from farming toward urban employment. This trend creates a pressing need to further automate agricultural processes. In other words, intelligent agriculture must continue to be developed to ensure that fields can maintain or increase productivity with reduced labor. According to FAO et al. [[1]](https://www.fao.org/faostat/en/#home), the global harvested area of major88primary crops reached 1.5 billion hectares in 2024, representing an increase of 197 million hectares compared to 2010.
+As the worldwide population continues to grow, the agricultural workforce is aging, and newer generations are increasingly moving away from farming toward urban employment. This trend creates a pressing need to further automate agricultural processes. In other words, intelligent agriculture must continue to be developed to ensure that fields can maintain or increase productivity with reduced labor. According to FAO et al. [[1]](https://www.fao.org/faostat/en/#home), the global harvested area of major primary crops reached 1.5 billion hectares in 2024, representing an increase of 197 million hectares compared to 2010.
+
+In this context, unmanned ground vehicles (UGVs) represent a means to achieve autonomy in the field with minimal human intervention. These systems can be equipped with sensors such as LiDAR, RGB cameras, GPS, and onboard computers to perform different agricultural tasks, including soil seeding, crop and weed detection, and pesticide application, enabling precision agriculture.
 
 This repository presents the feasibility of training two independent convolutional networks within a decoupled computational framework using synchronized RGB images acquired by a differential-drive robot in a greenhouse. A lightweight convolutional neural network with fully connected layers (CNN-FC) predicts steering-angle and velocity control commands, while a U-Net segments plant regions on a plastic mulch using binary pseudo-labels automatically generated via HSV color-space thresholding.
 
@@ -137,13 +139,14 @@ Follow these steps to set up your workspace:
 
    ```
 7. **Launch the model ai test:**
-8. 
+ 
     ```bash
    change the executable joystick trigger to:
    add_executable(joystick_trigger src/joystick_trigger_ai_mode.cpp)
 
    $cd ~/ros2_ws
    $ros2 launch andromina_control_bringup  andromina_ai.launch.py 
+
    ```
 
 # Bibliogrhapy:
