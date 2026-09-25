@@ -26,7 +26,7 @@ The robotic system used for gathering the data is ilustrated in Figure 1. The ro
  * **RAM:** 32GB 
  * **GPU:** 2x NVIDIA GeForce RTX (12 GB and 16 GB VRAM)
  * **OS:**  Ubuntu 22.04.1 LTS
- * 
+ 
 ### Software Environment
 * **Framework:** PyTorch 2.12.0+cu132
 * **Interface:** Jupyter Notebook 7.5.6
@@ -39,7 +39,7 @@ The robotic system used for gathering the data is ilustrated in Figure 1. The ro
  * **RAM:** 15.6GB 
  * **GPU:** llvmpipe (LLVM 14.0.0, 128 bits) / Mali-G610 (Panfrost)
  * **OS:**  Ubuntu 22.04.1 LTS
- * 
+ 
 ### Software Environment
 * **Framework:** ROS2
 
@@ -115,7 +115,7 @@ To ensure the training scripts and `andromina_ai_model` package can find the dat
 mkdir -p data/processed
 
 # Extract the downloaded zip file into data/processed
-unzip /path/to/downloaded/dataset.zip -d data/processed/
+unzip /path/to/downloaded/dataset.zip -d "/path/to/your/root/working/directory"
 ```
 
 ## 🔧 Dependencies & Installation
