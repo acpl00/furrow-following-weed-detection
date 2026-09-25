@@ -19,7 +19,7 @@ The robotic system used for gathering the data is ilustrated in Figure 1. The ro
 </p>
 
 
-## PREREQUISITES
+## PREREQUISITES TO TRAIN THE ARCHITECTURE
  
 ### Hardware Specifications 
  * **CPU:** Intel Core i7-14700KF
@@ -32,6 +32,16 @@ The robotic system used for gathering the data is ilustrated in Figure 1. The ro
 * **Interface:** Jupyter Notebook 7.5.6
 
 
+## PREREQUISITES TO RUN THE LAUNCH FILES
+
+### Hardware Specifications 
+ * **CPU:** Rockchip RK3588S
+ * **RAM:** 15.6GB 
+ * **GPU:** llvmpipe (LLVM 14.0.0, 128 bits) / Mali-G610 (Panfrost)
+ * **OS:**  Ubuntu 22.04.1 LTS
+ * 
+### Software Environment
+* **Framework:** ROS2
 
 
 
@@ -87,6 +97,25 @@ The robotic system used for gathering the data is ilustrated in Figure 1. The ro
         └── src/
             └── data_sync_thread.cpp               # Records and syncs field datasets
 
+```
+
+##  Dataset Setup
+
+This project utilizes real-world greenhouse data collected by the differential-drive robot for furrow following and weed detection. The dataset contains synchronized RGB images and automatically generated binary pseudo-labels via HSV color-space thresholding.
+
+### 1. Download the Data
+Download the `dataset.zip` file (1.0 GB) directly from Zenodo:
+🔗 **[Zenodo Dataset Record 22881215](https://zenodo.org)**
+
+### 2. Extract into the Project Structure
+To ensure the training scripts and `andromina_ai_model` package can find the data without modification, create a `data/` folder in the root directory of this repository and extract the files there:
+
+```bash
+# From the root directory of the repository
+mkdir -p data/processed
+
+# Extract the downloaded zip file into data/processed
+unzip /path/to/downloaded/dataset.zip -d data/processed/
 ```
 
 ## 🔧 Dependencies & Installation
